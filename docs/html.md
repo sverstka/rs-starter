@@ -1,11 +1,11 @@
 # HTML
 
-Основой сборки html является
-[плагин 'gulp-file-include'](https://www.npmjs.com/package/gulp-file-include).
+Основой сборки html является npm пакет
+['gulp-file-include'](https://www.npmjs.com/package/gulp-file-include).
 
 Все страницы сайта находятся в src/pages. Сейчас в этой директории находится
 src/pages/index.html. Эта страница будет обработана плагином 'gulp-file-include'
-и перенесена в public/index.html.
+и перенесена в директорию public.
 
 Каждая страница состоит из компонентов. Все компоненты находятся в
 src/components.

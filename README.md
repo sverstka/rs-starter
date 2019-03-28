@@ -4,9 +4,9 @@
 
 
 ## Некоторые фичи
-- **HTML** - все компоненты собираются при помощи
-[плагина 'gulp-file-include'](https://www.npmjs.com/package/gulp-file-include).
-- **CSS** - в качестве препроцессора для css используется SCSS (SASS). css-файлы
+- **HTML** - все компоненты собираются при помощи npm пакета
+['gulp-file-include'](https://www.npmjs.com/package/gulp-file-include).
+- **CSS** - в качестве препроцессора для css используется SCSS. scss-файлы
 компонентов автоматически прописываются в src/assets/styles/components/_index.scss
 - **JS** - используется Webpack, Babel.
 - **Спрайты изображений** - растровые и SVG спрайты.
@@ -23,7 +23,7 @@
             └── componentName/                        Непосредственно сам компонент
                 ├── img/                              Изображения для этого компонента (поддиректории поддерживает)
                     ├── spriteRaster/                 Директория изображений для растровых спрайтов
-                    └── spriteSvg/                        Директория изображений для svg спрайтов
+                    └── spriteSvg/                    Директория изображений для svg спрайтов
                 ├── componentName.html                html-представление компонента
                 ├── _componentName.scss               scss-представление компонента
                 ├── componentName.js                  js-представление компонента АВТОМАТИЧЕСКИ подключаемое
@@ -35,13 +35,13 @@
 у какого-нибудь элемента класс, состоящий из одного слова(либо несколько слов
 через дефис), то это компонент и его нужно искать в src/components.
 
-- html-разметка компонентов собирается при помощи
-[плагина 'gulp-file-include'](https://www.npmjs.com/package/gulp-file-include).
+- html-разметка компонентов собирается при помощи npm пакета
+['gulp-file-include'](https://www.npmjs.com/package/gulp-file-include).
     Подробнее docs/html.md.
-- scss компонентов автоматически собираются в src/assets/styles/components/_index.scss.  
+- scss файлы компонентов АВТОМАТИЧЕСКИ собираются в src/assets/styles/components/_index.scss.  
     Подробнее docs/styles.md.
-- js компонентов файлов componentName.js АВТОМАТИЧЕСКИ  прописывается в 
-    src/assets/js/components/index.js. Подробнее docs/js.md.
+- js файлы компонентов файлов componentName.js АВТОМАТИЧЕСКИ  прописываются в 
+    src/assets/js/components/components.js. Подробнее docs/js.md.
 - изображения компонентов автоматически собираются в public/img в директории,
     имеющие такие же названия, как и названия компонентов.  
     Подробнее docs/images.md.
@@ -76,7 +76,7 @@
 ###### Расшарить верстку в интернет
 В файле projectOptions.js свойству "tunnel" прописываем true. После запуска
 сборщика, в консоли выведется что-то подобное:
-'Tunnel: https://cowardly-yak-64.localtunnel.me'. Это будет адрес, перейдя по
+'Tunnel: https: //cowardly-yak-64.localtunnel.me'. Это будет адрес, перейдя по
 которому, мы можем видеть верстку в интернете.
 
 

@@ -1,6 +1,4 @@
 # SVG спрайты изображений
-- tasks/spriteSvg.js - таск, обрабатывающий svg-спрайты
-
 Изображения для svg-спрайтов должны находиться в следующих директориях:
 - src/components/**componentName**/img/spriteSvg
 - src/assets/img/spriteSvg
