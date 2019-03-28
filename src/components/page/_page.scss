@@ -1,0 +1,19 @@
+.page {
+  &__header {
+    font-size: 38px;
+    font-family: $ff-primary;
+  }
+}
+
+//==============================================================================
+
+// modifiers
+.page--modifiersName {
+  &.page {
+  }
+
+  .page {
+    &__ {
+    }
+  }
+}

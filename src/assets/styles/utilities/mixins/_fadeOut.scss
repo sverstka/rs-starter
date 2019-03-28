@@ -1,0 +1,16 @@
+//==============================================================================
+// Mixins/FadeOut
+//==============================================================================
+
+// @source https://fvsch.com/code/transition-fade/test5.html#test3
+// jqurey эффект fadeOut реализован с помощью js and css. Элементу, который
+// необходимо скрыть добавляем класс .fadeOut - el.className = 'elClass fadeOut';
+// Затем, в css этому элементу добавляем миксин @include fadeOut(3s);
+@mixin fadeOut($duration: 2s) {
+  &.fadeOut {
+    overflow: hidden;
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0s $duration, opacity $duration linear;
+  }
+}

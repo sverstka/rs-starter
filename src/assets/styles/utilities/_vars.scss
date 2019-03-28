@@ -1,0 +1,42 @@
+//==============================================================================
+// Utilites/Variables
+//==============================================================================
+
+// COLORS
+// colors
+$color-primary: #4d4d4d !default;
+$color-second: #333 !default;
+$color-accent: rgb(28, 8, 104) !default;
+$color-brand: #eb5959 !default;
+$color-form: rgba(153, 153, 153, .9) !default;
+$color-secondary: #fff;
+
+
+// cf - color fonts
+$cf-primary: #4d4d4d !default;
+$cf-accent: #eb5959 !default;
+$cf-brand: #ebe !default;
+$cf-form: rgba(153, 153, 153, .9) !default;
+
+// cl - color link
+$cl:                $color-accent !default;
+$cl-hover:          $color-brand !default;
+$cl-visited:		$color-accent !default;
+$cl-hover-bg:       $color-accent !default;
+
+// background
+$color-background:      	$color-secondary !default;
+
+//==============================================================================
+
+// FONTS
+// fs - font size
+$fs-primary: 18px;
+$fs-second: 20px;
+
+// ff - font family
+$ff-primary: 'Roboto', sans-serif !default;
+// $ff-second: 'calibri', sans-serif !default;
+
+// font
+$font-primary: $fs-primary $ff-primary;

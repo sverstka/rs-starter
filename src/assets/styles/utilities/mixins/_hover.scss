@@ -1,0 +1,20 @@
+//==============================================================================
+// Mixins/Hover
+//==============================================================================
+
+//// Hovers
+//// Create pseduo-classes for `:hover`, `:active`, and `:focus`.
+@mixin hover {
+  &.active,
+  &.current-menu-item,
+  &:hover {
+    @content;
+  }
+}
+
+@mixin hovercur {
+  &.current-menu-item,
+  &.current-menu-parent {
+    @content;
+  }
+}

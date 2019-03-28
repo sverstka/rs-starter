@@ -1,0 +1,19 @@
+# IDE & System Related Files #
+.idea
+.vscode
+
+# Local System Files (i.e. cache, logs, etc.) #
+node_modules/
+public/
+package-lock.json
+npm-debug.log
+yarn.lock
+
+# Never ignore #
+# Only apply this rule to the main repository's gitignore files
+!/.gitignore
+
+src/assets/styles/components/_index.scss
+src/assets/js/components/components.js
+src/assets/styles/utilities/sprites/_spriteRaster.scss
+src/assets/styles/utilities/sprites/_spriteSvg.scss

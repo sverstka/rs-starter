@@ -1,0 +1,27 @@
+@mixin field-help-text {
+
+  display: block;
+  padding-top: 0.1em;
+  font-size: .75em;
+  line-height: 1.2em;
+  color: #808080;
+
+  &:empty {
+    display: none;
+  }
+}
+
+
+@mixin field-focus {
+  outline: 0;
+  //box-shadow: 0 0 0 2px rgba($color-main, $opacity);
+  box-shadow: 0 0 0 2px rgba(#919191, 1);
+}
+
+
+@mixin field-title {
+  display: block;
+  margin-bottom: 0.4em;
+  line-height: 1.375em;
+  font-weight: 700;
+}

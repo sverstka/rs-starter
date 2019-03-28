@@ -1,0 +1,82 @@
+//==============================================================================
+// Mixins/media-queries
+//==============================================================================
+
+//------------------------------------------------------------------------------
+//  mixins for MIN-width
+//------------------------------------------------------------------------------
+@mixin xs {
+  @media (min-width: $screen-xs) {
+    @content;
+  }
+}
+
+@mixin sm {
+  @media (min-width: $screen-sm) {
+    @content;
+  }
+}
+
+@mixin md {
+  @media (min-width: $screen-md) {
+    @content;
+  }
+}
+
+@mixin lg {
+  @media (min-width: $screen-lg) {
+    @content;
+  }
+}
+
+@mixin xl {
+  @media (min-width: $screen-xl) {
+    @content;
+  }
+}
+
+@mixin xxl {
+  @media (min-width: $screen-xxl) {
+    @content;
+  }
+}
+
+
+//------------------------------------------------------------------------------
+//  mixins for MAX-width
+//------------------------------------------------------------------------------
+@mixin xs-max {
+  @media (max-width: $screen-xs) {
+    @content;
+  }
+}
+
+@mixin sm-max {
+  @media (max-width: $screen-sm) {
+    @content;
+  }
+}
+
+@mixin md-max {
+  @media (max-width: $screen-md) {
+    @content;
+  }
+}
+
+@mixin lg-max {
+  @media (max-width: $screen-lg) {
+    @content;
+  }
+}
+
+@mixin xl-max {
+  @media (max-width: $screen-xl) {
+    @content;
+  }
+}
+
+@mixin xxl-max {
+  @media (max-width: $screen-xxl) {
+    @content;
+  }
+}

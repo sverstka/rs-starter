@@ -1,0 +1,23 @@
+.main {
+  display: flex;
+
+  &__in {
+    margin: 0 auto;
+    background-color: #ffeb68;
+
+    @include container();
+  }
+}
+
+//==============================================================================
+
+// modifiers
+.main--modifiersName {
+  &.main {
+  }
+
+  .main {
+    &__ {
+    }
+  }
+}

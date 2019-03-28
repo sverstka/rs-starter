@@ -1,0 +1,76 @@
+//==============================================================================
+// Mixins/Mixins for last elements
+//==============================================================================
+
+// Данный миксин даёт возможность работать с элементами последней строки.
+// Например, в списке можно задать для элементов последней строки
+// margin-bottom: 0;
+@mixin lastRowElements($columns, $selector: null) {
+  &:nth-child(#{$columns}n+1):nth-last-child(-n+#{$columns}),
+  &:nth-child(#{$columns}n+1):nth-last-child(-n+#{$columns}) ~ #{$selector} {
+    @content;
+  }
+}
+
+//==============================================================================
+
+// @source https://stackoverflow.com/questions/18744164/flex-box-align-last-row-to-grid#answer-33375496
+// Миксин, исправляющий баг последней строки при justify-content: space-between;
+// То есть, элементы в последней строке располагаются так же, как и на
+// предыдущих строках.
+
+/*ВНИМАНИЕ !!!*/
+// В каждой строке первый элемент отстоит от левого края блоока на половину
+// расстояния между блоками, а каждый последний элемент каждой строки отстоит
+// от правого края блока на половину расстояния между блоками.
+// $spacing - пиксели или проценты
+// В обертке блока прописать:
+//display: flex;
+//flex-flow: row wrap;
+//justify-content: flex-start;
+@mixin lastRowFlexboxSpaceAround($columnNumber, $spacing) {
+  $sideMargin: calc(#{$spacing / 2});
+  box-sizing: border-box;
+  width: calc((100% - #{$spacing * ($columnNumber)}) / #{$columnNumber});
+  margin-left: $sideMargin;
+  margin-right: $sideMargin;
+}
+
+//==============================================================================
+
+// @source https://stackoverflow.com/questions/18744164/flex-box-align-last-row-to-grid#answer-33375496
+// Миксин, исправляющий баг последней строки при justify-content: space-between;
+// То есть, элементы в последней строке располагаются так же, как и на
+// предыдущих строках.
+
+/*ВНИМАНИЕ !!!*/
+// В каждой строке первый элемент прижат к левому краю блока, а каждый последний
+// элемент каждой строки прижат к правому краю блока.
+// $spacing - пиксели или проценты
+// В обертке блока прописать:
+//display: flex;
+//flex-flow: row wrap;
+//justify-content: flex-start;
+@mixin lastRowFlexboxSpaceBetween($columnNumber, $spacing) {
+  $sideMargin: calc(#{$spacing / 2});
+  box-sizing: border-box;
+  width: calc((100% - #{$spacing * ($columnNumber - 1)}) / #{$columnNumber});
+  margin-left: $sideMargin;
+  margin-right: $sideMargin;
+
+  &:nth-of-type(#{($columnNumber - 1)}n + 1) {
+    margin-left: $sideMargin;
+  }
+
+  &:nth-of-type(#{($columnNumber - 1)}n) {
+    margin-right: $sideMargin;
+  }
+
+  &:nth-of-type(#{$columnNumber}n + 1) {
+    margin-left: 0;
+  }
+
+  &:nth-of-type(#{$columnNumber}n) {
+    margin-right: 0;
+  }
+}

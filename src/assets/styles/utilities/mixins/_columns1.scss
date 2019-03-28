@@ -1,0 +1,38 @@
+// Миксин, благодаря которому для каждого разрешения девайса можно указать
+// количество блоков в строке.
+
+
+//****************************************************************************//
+//Аналог этого же миксина - https://codepen.io/DanAndreasson/pen/ZQXLXj
+//****************************************************************************//
+
+
+// Оригинал миксина
+// https://jsfiddle.net/x3jvfrg1/
+// @mixin columns1($col-number) {
+//   display: flex;
+//   flex-direction: row;
+//   flex-wrap: wrap;
+//   width: calc(100% + #{$def-pad});
+//   margin: calc((#{$def-pad} / 2) * -1);
+
+//   > * {
+//     flex: $col-number 1 (100% / $col-number);
+//     max-width: 100% / $col-number;
+//     padding: $def-pad / 2;
+//   }
+// }
+//// Оригинал миксина
+
+// ВОТ ЭТО ПРОПИСАТЬ РОДИТЕЛЮ БЛОКОВ, ЧТОБЫ В РЕЗУЛЬТИРУЮЩИХ CSS НЕ БЫЛО ТАК МНОГО СТИЛЕЙ.
+//   display: flex;
+//   flex-direction: row;
+//   flex-wrap: wrap;
+//   width: calc(100% + #{$def-pad});
+//   margin: calc((#{$def-pad} / 2) * -1);
+//// ВОТ ЭТО ПРОПИСАТЬ РОДИТЕЛЮ
+
+@mixin columns1($col-number) {
+  flex: $col-number 1 (100% / $col-number);
+  max-width: 100% / $col-number;
+}

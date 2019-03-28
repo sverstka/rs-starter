@@ -1,0 +1,24 @@
+.footer {
+  background-color: #000;
+
+  &__in {
+    margin: 0 auto;
+    min-height: 70px;
+    background-color: #f00;
+
+    @include container();
+  }
+}
+
+//==============================================================================
+
+// modifiers
+.footer--modifiersName {
+  &.footer {
+  }
+
+  .footer {
+    &__ {
+    }
+  }
+}

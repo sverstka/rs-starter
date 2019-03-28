@@ -1,0 +1,10 @@
+{
+    "plugins": [],
+    "attr-name-style": false,
+    "attr-req-value": false,
+    "line-end-style": false,
+    "id-class-style": false,
+    "spec-char-escape": false,
+    "indent-style": "nonmixed",
+    "indent-width": 1
+}

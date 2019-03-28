@@ -1,0 +1,27 @@
+// Миксин, благодаря которому для каждого разрешения девайса можно указать
+// количество блоков в строке с помощью justify-content: flex-start;
+
+//****************************************************************************//
+//Возможные аналоги - https://stackoverflow.com/questions/18744164/flex-box-align-last-row-to-grid
+//****************************************************************************//
+
+// ВОТ ЭТО ПРОПИСАТЬ РОДИТЕЛЮ БЛОКОВ.
+// display: flex;
+// flex-direction: row;
+// flex-wrap: wrap;
+// justify-content: flex-start;
+//// ВОТ ЭТО ПРОПИСАТЬ РОДИТЕЛЮ ...
+// если хотим, чтобы элементы последней строки были по центру, то:
+// justify-content: space-around;
+
+@mixin columns($col-number, $mar: 25) {
+  &:nth-of-type(n) {
+    margin-right: $mar * 1px - 1px;
+  }
+  margin-bottom: $mar - 1px;
+  width: calc((100% - #{$mar * ($col-number - 1) * 1px}) / #{$col-number});
+
+  &:nth-of-type(#{$col-number}n) {
+    margin-right: 0;
+  }
+}
