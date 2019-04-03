@@ -35,6 +35,7 @@ module.exports = () => {
 		},
 		mode,
 		output: {
+			publicPath: 'js/',
 			path: path.resolve(__dirname, 'public/js'),
 			filename: '[name].min.js',
 			chunkFilename: '[name].min.js'
