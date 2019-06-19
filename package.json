@@ -13,10 +13,6 @@
     "postcss",
     "svg-sprites"
   ],
-  "engines": {
-    "npm": "^6.x.x",
-    "node": "^8.x.x"
-  },
   "author": {
     "name": "Roman Selivorstov",
     "url": "http://sverstka.ru/"
