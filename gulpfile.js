@@ -150,9 +150,7 @@ gulp.task('stylesAllProcessing', () => {
 			includePaths: ['./node_modules']
 		}))
 		.pipe(glp.postcss([
-			autoprefixer({
-				browsers: ['ie >= 10', 'last 2 versions', 'Firefox ESR', 'android >= 4', '> 1%']
-			}),
+			autoprefixer(),
 			inlineSVG(),
 			cssMqpacker()
 		]))
