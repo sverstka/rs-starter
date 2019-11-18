@@ -725,36 +725,31 @@ gulp.task('resizeImg', (done) => {
 	const directory = path.join('./src/components/gallery/img/thumbs/');
 	// Директория, в которую отправляются обработанные изображения
 	const toDirectory = path.join('./src/components/gallery/img/thumbs');
+	// Указываем необходимые размеры изображений
+	let sizes = [];
+	// let sizes = [475, 575];
 
-	fs.readdirSync(directory).forEach(file => {
-		let fileName = file.match('(.+?)\.[^\.]+$');
+	sizes.forEach(size => {
+		if (!fs.existsSync(`${toDirectory}/${size}/`)) {
+			fs.mkdirSync(`${toDirectory}/${size}/`);
+		}
 
-		sharp(`${directory}/${file}`)
-			.clone()
-			.resize(575) // width, height
-			.toFile(`${toDirectory}/to-sm/${fileName[1]}.jpg`);
+		fs.readdirSync(directory)
+			.forEach(file => {
+				let fileName = file.match('(.+?)\.[^\.]+$');
 
-		sharp(`${directory}/${file}`)
-			.clone()
-			.resize(475)
-			.toFile(`${toDirectory}/to-lg/${fileName[1]}.jpg`);
-
-		sharp(`${directory}/${file}`)
-			.clone()
-			.resize(358)
-			.toFile(`${toDirectory}/to-xl/${fileName[1]}.jpg`);
-
-		sharp(`${directory}/${file}`)
-			.clone()
-			.resize(405)
-			.toFile(`${toDirectory}/to-xxl/${fileName[1]}.jpg`);
-
-		sharp(`${directory}/${file}`)
-			.clone()
-			.resize(335)
-			.toFile(`${toDirectory}/xxl/${fileName[1]}.jpg`);
+				sharp(`${directory}/${file}`)
+					.clone()
+					.resize(size) // width, height
+					.toFile(`${toDirectory}/${size}/${fileName[1]}.jpg`)
+					.then(() => {
+						// console.log('handle success here');
+					})
+					.catch((e) => {
+						// console.log('handle error here: ', e.message);
+					});
+			});
 	});
-
 
 	done();
 });
