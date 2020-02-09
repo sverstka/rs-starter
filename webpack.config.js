@@ -2,8 +2,7 @@ const glp = require('gulp-load-plugins')();
 const path = require('path');
 const webpack = require('webpack');
 
-const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
-// const PolyfillInjectorPlugin = require('webpack-polyfill-injector');
+const TerserPlugin = require('terser-webpack-plugin');
 
 const projectConfig = require('./projectConfig');
 // const projectOptions = require('./projectOptions');
@@ -13,23 +12,21 @@ const projectConfig = require('./projectConfig');
 const isDevelopment = glp.util.env.type === 'development';
 const isProduction = glp.util.env.type === 'production';
 
-var main;
-var mode;
+let main;
+let mode;
+let minimize;
 if (isDevelopment) {
 	mode = 'development';
+	minimize = false;
 	main = [
 		'./src/assets/js/main.js'
 	];
 } else if (isProduction) {
 	mode = 'production';
+	minimize = true;
 	main = [
 		'./src/assets/js/main.js'
 	];
-	// main = `webpack-polyfill-injector?${JSON.stringify({
-	// 	modules: [
-	// 		'./src/assets/js/main.js'
-	// 	]
-	// })}!`;
 }
 
 
@@ -50,11 +47,7 @@ module.exports = () => {
 				{
 					test: /\.js$/,
 					exclude: /node_modules/,
-					loader: 'babel-loader',
-					options: {
-						presets: [['es2015', { modules: false }]],
-						plugins: ['syntax-dynamic-import']
-					}
+					loader: 'babel-loader'
 				}
 			]
 		},
@@ -77,13 +70,10 @@ module.exports = () => {
 		// 	}
 		// },
 		optimization: {
+			minimize,
 			minimizer: [
-				new UglifyJSPlugin({
-					uglifyOptions: {
-						output: {
-							comments: false
-						}
-					},
+				new TerserPlugin({
+					exclude: /node_modules/,
 					parallel: true
 				})
 			]
@@ -101,14 +91,6 @@ module.exports = () => {
 
 	if (isProduction) {
 		webpackConfig.plugins.push(
-			// new PolyfillInjectorPlugin({
-			// 	polyfills: [
-			// 		// Polyfills - https://github.com/Financial-Times/polyfill-service/tree/master/packages/polyfill-library/polyfills
-			// 		// Polyfill names - https://polyfill.io/v2/docs/examples , https://polyfill.io/v3/url-builder/
-			// 	],
-			// 	// filename: 'polyfills/polyfill.'
-			// 	filename: 'z-polyfill.'
-			// })
 		);
 	}
 
