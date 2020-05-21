@@ -18,6 +18,7 @@ const cssMqpacker = require('css-mqpacker');
 const imageminJpegRecompress = require('imagemin-jpeg-recompress');
 const imageminOptipng = require('imagemin-optipng');
 const sharp = require('sharp');
+const critical = require('critical');
 
 const webpack = require('webpack');
 const webpackConfig = require('./webpack.config')();
@@ -168,6 +169,22 @@ gulp.task('stylesAllProcessing', () => {
 		})))
 		.pipe(gulp.dest(path.join(projectConfig.root.public, projectConfig.styles.public)))
 		.pipe(browserSync.reload({ stream: true }));
+});
+
+// Critical styles
+gulp.task('critical', () => {
+  return gulp.src('./public/*.html')
+	.pipe(critical.stream({
+	  inline: true,
+	  base: './public/',
+	  minify: true,
+	  extract: true,
+	  width: 1200,
+	  height: 900,
+	  ignore: ['@font-face', '@charset']
+	}))
+	.on('error', (err) => { console.log(err) })
+	.pipe(gulp.dest('./public'));
 });
 
 gulp.task('styles', gulp.series('stylesComponents', 'stylesAllProcessing'));
@@ -702,12 +719,18 @@ function reload(done) {
 gulp.task('build', gulp.series(
 	'clean',
 	gulp.parallel('html', 'js', 'spriteRaster', 'spriteSvg', 'imgAssets', 'imgComponents', 'fonts'),
-	'styles'
+	'styles', 'critical'
+));
+
+gulp.task('build-default', gulp.series(
+  	'clean',
+  	gulp.parallel('html', 'js', 'spriteRaster', 'spriteSvg', 'imgAssets', 'imgComponents', 'fonts'),
+  	'styles'
 ));
 
 // Задача по умолчанию
 gulp.task('default', gulp.series(
-	'build',
+	'build-default',
 	gulp.parallel(
 		'watch',
 		'serve'
